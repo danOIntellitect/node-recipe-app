@@ -1,3 +1,6 @@
+# Ignore all images except .gitkeep
+public/images/*
+!public/images/.gitkeep
 # Logs
 logs
 *.log

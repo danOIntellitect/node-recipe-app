@@ -10,6 +10,13 @@
         
         <!-- Recipe Details -->
         <div id="recipe-details" class="recipe-content">
+            {{#if recipe.picture}}
+                <div class="recipe-section">
+                    <div class="ingredients">
+                        <img src="/images/{{recipe.picture}}" alt="{{recipe.title}}" class="recipe-view-image" style="max-width:300px;height:auto;">
+                    </div>
+                </div>
+            {{/if}}
             <div class="recipe-section">
                 <h2>Ingredients</h2>
                 <div class="ingredients">
@@ -48,13 +55,17 @@
         <!-- Edit Recipe Form (initially hidden) -->
         <div id="edit-recipe-form" class="recipe-form" style="display: none;">
             <h2>Edit Recipe</h2>
-            <form action="/recipes/{{recipe.id}}/edit" method="POST">
+            <form action="/recipes/{{recipe.id}}/edit" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="edit-title">Recipe Title:</label>
                     <input type="text" id="edit-title" name="title" value="{{recipe.title}}" required>
                 </div>
                 
                 <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="edit-picture">Recipe Image:</label>
+                                        <input type="file" id="edit-picture" name="picture" accept="image/*">
+                                    </div>
                     <label for="edit-ingredients">Ingredients:</label>
                     <textarea id="edit-ingredients" name="ingredients" rows="4" required>{{recipe.ingredients}}</textarea>
                 </div>
